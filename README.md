@@ -21,4 +21,4 @@ En el caso de que queramos hacer una importación nos dirigimos a la pestaña im
 ![](/images/3.png)
 
 **5. Exporta todos los documentos de las colecciones de MongoDB que tengan más de cuatro documentos e impórtalos en otra base de datos .**
-Antes de nada voy a crear varias colecciones y voy a darles contenido. Crearé una con más de cuatro documentos y las demás con uno o dos documentos con el siguiente [codigo](/docs/mongo-query.json)
+Antes de nada voy a crear varias colecciones y voy a darles contenido. Crearé una con más de cuatro documentos y las demás con uno o dos documentos con el siguiente [codigo](https://raw.githubusercontent.com/LuisaoStuff/Practica7BBDD/master/docs/mongo-query.json)
