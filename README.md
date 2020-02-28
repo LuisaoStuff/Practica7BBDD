@@ -31,7 +31,7 @@ db.getCollectionNames().forEach(
 	function(collection) { 
 	    var documentCount = db[collection].count(); 
 	    if(documentCount>4) { 
-	        mongoexport --collection=collection;
+	        mongoexport --collection=collection.name --out=collection.name.json;
 	    } 
 
 	}
