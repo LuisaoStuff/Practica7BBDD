@@ -20,5 +20,22 @@ En realidad, esto básicamente ejecuta el comando mysqldump por debajo, con los 
 En el caso de que queramos hacer una importación nos dirigimos a la pestaña import y tan solo tendremos que subir un fichero con el formato que nos indica (<**formSQL**>.[<**formCompresión**>]). Después elegimos la codificación de caracteres que tiene el texto del fichero y pulsamos **_Go_**.
 ![](/images/3.png)
 
-**5. Exporta todos los documentos de las colecciones de MongoDB que tengan más de cuatro documentos e impórtalos en otra base de datos .**
+**5. Exporta todos los documentos de las colecciones de MongoDB que tengan más de cuatro documentos e impórtalos en otra base de datos.**
+
 Antes de nada voy a crear varias colecciones y voy a darles contenido. Crearé una con más de cuatro documentos y las demás con uno o dos documentos con el siguiente [codigo](https://raw.githubusercontent.com/LuisaoStuff/Practica7BBDD/master/docs/mongo-query.json)
+He estado buscando en la _documentación oficial_ de **MongoDB**, concretamente en la sección de la función [mongoexport](https://docs.mongodb.com/manual/reference/program/mongoexport/) y no he llegado a encontrar ninguna forma de parametrizar o aplicar una serie de filtros para definir qué colecciones exportar según que argumentos. Lo único que se me ha ocurrido es pensar e intentar crear un procedimiento (como en **PLSQL**).
+
+```
+db.getCollectionNames().forEach(
+
+	function(collection) { 
+	    var documentCount = db[collection].count(); 
+	    if(documentCount>4) { 
+	        mongoexport --collection=collection;
+	    } 
+
+	}
+);
+
+```
+No obstante este procedimiento no funciona correctamente, ya que aún no he llegado a comprender la sintaxis del todo, pero la idea sería esta; un procedimiento que con **getCollectionNames**, por cada colección vaya **mostrando** el número de **documentos** que tiene, y si tiene **más de 4**, la exporte.
